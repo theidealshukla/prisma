@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+
 import { ArrowRight, Globe, Smartphone, Code2, ServerCog } from "lucide-react";
 import WordsPullUp from "../animations/WordsPullUp";
 
@@ -74,7 +74,7 @@ const services = [
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 
-function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
+function ServiceCard({ service }: { service: typeof services[0] }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const Icon = service.icon;
 
@@ -185,7 +185,7 @@ export default function Services() {
         {/* Service cards */}
         <div className="space-y-3">
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+            <ServiceCard key={index} service={service} />
           ))}
         </div>
       </div>
