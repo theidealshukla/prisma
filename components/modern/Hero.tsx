@@ -5,27 +5,34 @@ import { ArrowRight } from "lucide-react";
 import { MeshGradient } from "@paper-design/shaders-react";
 import WordsPullUp from "../animations/WordsPullUp";
 import Navigation from "./Navigation";
+import { useRef } from "react";
+import { useParallax } from "../animations/useParallax";
 
 export default function Hero() {
+  const bgRef = useRef<HTMLDivElement>(null);
+  useParallax(bgRef, 0.5);
+
   return (
-    <section className="relative h-screen p-4 md:p-6 bg-black">
+    <section className="relative h-screen p-4 md:p-6 bg-black overflow-hidden">
       <div className="relative w-full h-full rounded-2xl md:rounded-[2rem] overflow-hidden bg-surface">
         
-        {/* Shader Background — Layer 1: colour mesh */}
-        <MeshGradient
-          className="absolute inset-0 w-full h-full"
-          colors={["#000000", "#06b6d4", "#0891b2", "#164e63", "#f97316"]}
-          speed={0.3}
-          backgroundColor="#000000"
-        />
+        <div ref={bgRef} className="absolute inset-0 w-full h-[120%] -top-[10%]">
+          {/* Shader Background — Layer 1: colour mesh */}
+          <MeshGradient
+            className="absolute inset-0 w-full h-full"
+            colors={["#000000", "#06b6d4", "#0891b2", "#164e63", "#f97316"]}
+            speed={0.3}
+            backgroundColor="#000000"
+          />
 
-        {/* Shader Background — Layer 2: wireframe overlay */}
-        <MeshGradient
-          className="absolute inset-0 w-full h-full opacity-40"
-          colors={["#000000", "#ffffff", "#06b6d4", "#f97316"]}
-          speed={0.2}
-          backgroundColor="transparent"
-        />
+          {/* Shader Background — Layer 2: wireframe overlay */}
+          <MeshGradient
+            className="absolute inset-0 w-full h-full opacity-40"
+            colors={["#000000", "#ffffff", "#06b6d4", "#f97316"]}
+            speed={0.2}
+            backgroundColor="transparent"
+          />
+        </div>
 
         {/* Overlays */}
         <div className="absolute inset-0 noise-overlay opacity-50 mix-blend-overlay pointer-events-none" />

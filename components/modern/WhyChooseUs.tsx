@@ -2,6 +2,7 @@
 
 import AnimatedLetter from "../animations/AnimatedLetter";
 import WordsPullUpMultiStyle from "../animations/WordsPullUpMultiStyle";
+import { Counter } from "../animations/Counter";
 import { motion } from "framer-motion";
 
 const stats = [
@@ -73,9 +74,10 @@ export default function WhyChooseUs() {
             transition={{ delay: i * 0.1, duration: 0.6 }}
             className="bg-[#101010] rounded-2xl p-8 flex flex-col justify-between"
           >
-            <span className="text-4xl md:text-5xl font-medium text-[#E1E0CC] mb-2">
-              {stat.value}
-            </span>
+            <Counter 
+              value={stat.value} 
+              className="text-4xl md:text-5xl font-medium text-[#E1E0CC] mb-2" 
+            />
             <span className="text-gray-500 text-sm">{stat.label}</span>
           </motion.div>
         ))}
