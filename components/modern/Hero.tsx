@@ -13,7 +13,7 @@ export default function Hero() {
   useParallax(bgRef, 0.5);
 
   return (
-    <section className="relative h-screen p-4 md:p-6 bg-black overflow-hidden">
+    <section className="relative h-[100dvh] p-3 sm:p-4 md:p-6 bg-black overflow-hidden">
       <div className="relative w-full h-full rounded-2xl md:rounded-[2rem] overflow-hidden bg-surface">
         
         <div ref={bgRef} className="absolute inset-0 w-full h-[120%] -top-[10%]">
@@ -40,8 +40,8 @@ export default function Hero() {
         <Navigation />
 
         {/* Hero Content */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-12">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:gap-8 items-end">
             
             {/* Left: Giant Heading */}
             <div className="md:col-span-8">
@@ -53,7 +53,7 @@ export default function Hero() {
             </div>
 
             {/* Right: Description & CTA */}
-            <div className="md:col-span-4 flex flex-col items-start md:items-end md:text-right gap-6 md:pb-8">
+            <div className="md:col-span-4 flex flex-col items-start md:items-end md:text-right gap-4 sm:gap-6 md:pb-8">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
