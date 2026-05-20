@@ -114,9 +114,7 @@ function CardWrapper({
 
 function VideoCard() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  
-  // Need to import useParallax at top, I will do it next step if needed, or assume it's imported
-  
+
   return (
     <CardWrapper delay={0} className="lg:col-span-1 rounded-2xl overflow-hidden relative group">
       <div className="absolute inset-0 w-full h-[120%] -top-[10%]">
