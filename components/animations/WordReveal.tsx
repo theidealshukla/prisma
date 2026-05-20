@@ -12,16 +12,16 @@ export function WordReveal({
 
   useEffect(() => {
     if (!ref.current) return;
-    
+
     const words = ref.current.querySelectorAll("span.reveal-word");
-    
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ref.current,
         start: "top 80%",
         end: "bottom 60%",
         scrub: true,
-      }
+      },
     });
 
     tl.fromTo(
@@ -30,7 +30,9 @@ export function WordReveal({
       { opacity: 1, duration: 1, stagger: 0.1, ease: "none" }
     );
 
-    return () => tl.kill();
+    return () => {
+      tl.kill();
+    };
   }, []);
 
   const wordsArray = text.split(" ");
