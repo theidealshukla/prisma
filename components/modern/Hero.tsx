@@ -29,7 +29,6 @@ export default function Hero() {
             className="absolute inset-0 w-full h-full opacity-40"
             colors={["#000000", "#ffffff", "#06b6d4", "#f97316"]}
             speed={0.2}
-            backgroundColor="transparent"
           />
         </div>
 
