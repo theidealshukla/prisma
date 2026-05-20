@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
+import { WordReveal } from "../animations/WordReveal";
 
 const testimonials = [
   {
@@ -82,11 +83,10 @@ export default function Testimonials() {
           transition={{ duration: 1 }}
           className="bg-[#101010] rounded-[2rem] p-12 md:p-20 text-center"
         >
-          <p className="font-serif italic text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#E1E0CC] leading-[1.2] max-w-4xl mx-auto">
-            "Working with Prisma is what working with a world-class engineering
-            team should feel like — proactive, transparent, and obsessively
-            detail-oriented at every stage."
-          </p>
+          <WordReveal
+            text='"Working with Prisma is what working with a world-class engineering team should feel like — proactive, transparent, and obsessively detail-oriented at every stage."'
+            className="font-serif italic text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#E1E0CC] leading-[1.2] max-w-4xl mx-auto"
+          />
           <div className="mt-10 flex flex-col items-center gap-1">
             <span className="text-primary font-medium text-sm">
               Daniel Ortiz

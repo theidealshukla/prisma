@@ -71,6 +71,93 @@ const services = [
   },
 ];
 
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+
+function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const Icon = service.icon;
+
+  useEffect(() => {
+    if (!cardRef.current) return;
+    
+    gsap.fromTo(
+      cardRef.current,
+      {
+        clipPath: "inset(100% 0% 0% 0% round 16px)",
+        y: 50,
+      },
+      {
+        clipPath: "inset(0% 0% 0% 0% round 16px)",
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top 85%",
+        }
+      }
+    );
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      className="group bg-[#0a0a0a] hover:bg-[#111] border border-white/5 hover:border-white/10 p-8 md:p-12 transition-colors duration-500 will-change-transform"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+        {/* Left */}
+        <div className="lg:col-span-5">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-[#1a1a1a] flex items-center justify-center group-hover:rotate-12 transition-transform duration-500">
+              <Icon className="w-5 h-5 text-primary" />
+            </div>
+            <span className="text-gray-600 text-xs font-serif italic">
+              {service.number}
+            </span>
+          </div>
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-[#E1E0CC] mb-3 group-hover:text-white transition-colors">
+            {service.title}
+          </h3>
+          <p className="text-primary/60 text-sm md:text-base italic mb-6">
+            {service.tagline}
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-[#E1E0CC] transition-colors"
+          >
+            Discuss this service
+            <ArrowRight className="w-4 h-4 -rotate-45" />
+          </a>
+        </div>
+
+        {/* Right */}
+        <div className="lg:col-span-7 flex flex-col gap-8">
+          <p className="text-gray-400 text-sm md:text-base leading-[1.8]">
+            {service.description}
+          </p>
+          <div>
+            <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-4">
+              What's included
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+              {service.deliverables.map((item, i) => (
+                <li
+                  key={i}
+                  className="flex items-center gap-2 text-sm text-gray-400"
+                >
+                  <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Services() {
   return (
     <section
@@ -97,69 +184,9 @@ export default function Services() {
 
         {/* Service cards */}
         <div className="space-y-3">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.7, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="group bg-[#0a0a0a] hover:bg-[#111] border border-white/5 hover:border-white/10 rounded-2xl p-8 md:p-12 transition-all duration-500"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-                  {/* Left */}
-                  <div className="lg:col-span-5">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-10 h-10 rounded-xl bg-[#1a1a1a] flex items-center justify-center">
-                        <Icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <span className="text-gray-600 text-xs font-serif italic">
-                        {service.number}
-                      </span>
-                    </div>
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-[#E1E0CC] mb-3 group-hover:text-white transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-primary/60 text-sm md:text-base italic mb-6">
-                      {service.tagline}
-                    </p>
-                    <a
-                      href="#contact"
-                      className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-[#E1E0CC] transition-colors"
-                    >
-                      Discuss this service
-                      <ArrowRight className="w-4 h-4 -rotate-45" />
-                    </a>
-                  </div>
-
-                  {/* Right */}
-                  <div className="lg:col-span-7 flex flex-col gap-8">
-                    <p className="text-gray-400 text-sm md:text-base leading-[1.8]">
-                      {service.description}
-                    </p>
-                    <div>
-                      <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-4">
-                        What's included
-                      </p>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
-                        {service.deliverables.map((item, i) => (
-                          <li
-                            key={i}
-                            className="flex items-center gap-2 text-sm text-gray-400"
-                          >
-                            <span className="w-1 h-1 rounded-full bg-primary/50 shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+          {services.map((service, index) => (
+            <ServiceCard key={index} service={service} index={index} />
+          ))}
         </div>
       </div>
     </section>

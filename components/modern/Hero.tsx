@@ -22,7 +22,6 @@ export default function Hero() {
             className="absolute inset-0 w-full h-full"
             colors={["#000000", "#06b6d4", "#0891b2", "#164e63", "#f97316"]}
             speed={0.3}
-            backgroundColor="#000000"
           />
 
           {/* Shader Background — Layer 2: wireframe overlay */}

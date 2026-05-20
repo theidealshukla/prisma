@@ -34,28 +34,7 @@ export default function RecentProjects() {
         {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:h-[500px]">
           {/* Card 1: Video showcase */}
-          <CardWrapper delay={0} className="lg:col-span-1 rounded-2xl overflow-hidden relative group">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <span className="text-[10px] uppercase tracking-widest text-primary/60 mb-2 block">
-                Web Platform
-              </span>
-              <h3 className="text-[#E1E0CC] text-xl font-medium leading-snug">
-                Bespoke digital flagships.
-              </h3>
-              <p className="text-gray-400 text-xs mt-2">
-                Custom-built for performance & conversions.
-              </p>
-            </div>
-          </CardWrapper>
+          <VideoCard />
 
           {/* Card 2: Mobile */}
           <CardWrapper delay={0.15}>
@@ -130,6 +109,40 @@ function CardWrapper({
     >
       {children}
     </motion.div>
+  );
+}
+
+function VideoCard() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  
+  // Need to import useParallax at top, I will do it next step if needed, or assume it's imported
+  
+  return (
+    <CardWrapper delay={0} className="lg:col-span-1 rounded-2xl overflow-hidden relative group">
+      <div className="absolute inset-0 w-full h-[120%] -top-[10%]">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4"
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+      <div className="absolute bottom-6 left-6 right-6 pointer-events-none">
+        <span className="text-[10px] uppercase tracking-widest text-primary/60 mb-2 block">
+          Web Platform
+        </span>
+        <h3 className="text-[#E1E0CC] text-xl font-medium leading-snug">
+          Bespoke digital flagships.
+        </h3>
+        <p className="text-gray-400 text-xs mt-2">
+          Custom-built for performance & conversions.
+        </p>
+      </div>
+    </CardWrapper>
   );
 }
 
