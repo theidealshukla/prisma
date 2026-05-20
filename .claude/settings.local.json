@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python .agent/skills/ui-ux-pro-max/scripts/search.py \"IT consultancy SaaS landing page dark tech agency web development app development\" --design-system -p \"IT Consultancy\")",
+      "Bash(python .agent/skills/ui-ux-pro-max/scripts/search.py \"dark agency bold typography marquee testimonials\" --domain landing)",
+      "Bash(ls -la \"d:\\\\\\\\freelance projects\\\\\\\\it website\")",
+      "Bash(find \"d:\\\\\\\\freelance projects\\\\\\\\it website\" -type f -name \"*\")",
+      "Bash(cd \"d:\\\\\\\\freelance projects\\\\\\\\it website\")",
+      "Bash(python3 .agent/skills/ui-ux-pro-max/scripts/search.py \"IT consultancy SaaS web development software agency\" --design-system -p \"IT Web & App Dev Consultancy\" -f markdown)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(netstat -ano)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue)",
+      "WebSearch"
+    ]
+  }
+}

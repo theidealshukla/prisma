@@ -1,0 +1,11 @@
+
+> it-consultancy-website@0.1.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use by process 34560, using available port 3004 instead.
+   ▲ Next.js 15.5.18
+   - Local:        http://localhost:3004
+   - Network:      http://172.28.224.1:3004
+
+ ✓ Starting...
+ ✓ Ready in 2.5s
